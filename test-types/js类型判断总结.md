@@ -57,6 +57,10 @@ Object.prototype.toString.call(null) // "[object Null]"
 ```js
 Array.isArray([]) // true
 ```
+### NaN特殊判断
+```js
+isNaN(number)
+```
 
 ### 测试
 
@@ -161,3 +165,7 @@ instanceof Object ==> string false
 Object.prototype.toString.call() ==> string [object String]
 constructor ==> string function String() { [native code] }
 ```
+### 结论
+js中最好的类型判断方法应该是使用`Object.prototype.toString.call()`来判断，因为
+这种方法能判断大部分类型，唯一不能区分的是`NaN`和`Number`,因为`NaN`也是`Number`.
+我们可以跟`isNaN(number)`组合使用。
