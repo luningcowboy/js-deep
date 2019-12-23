@@ -1,4 +1,4 @@
-const TypeVales = {
+const TypeValues = {
     "Number": Object.prototype.toString.call(1),
     "String": Object.prototype.toString.call("1"),
     "Function": Object.prototype.toString.call(() => console.log("")),
@@ -11,7 +11,7 @@ const TypeVales = {
 };
 
 function _isEqualPrototype(v, type) {
-    return object.prototype.toString.call(v) === TypeVales[type];
+    return Object.prototype.toString.call(v) === TypeValues[type];
 }
 
 function isNumber(v) {
@@ -35,7 +35,7 @@ function isArray(v) {
 }
 
 function isUndefined(v) {
-    return _isEqualPrototype(v, "undefined");
+    return _isEqualPrototype(v, "Undefined");
 }
 
 function isFunction(v) {
@@ -50,14 +50,16 @@ function isNull(v) {
     return _isEqualPrototype(v, "Null");
 }
 
-module.exports = {
-    isNaN,
-    isNumber,
-    isString,
-    isObject,
-    isArray,
-    isUndefined,
-    isFunction,
-    isBoolean,
-    isNull
+if (!hoolai.TypeCheck) {
+    hoolai.TypeCheck = {
+        isNaN,
+        isNumber,
+        isString,
+        isObject,
+        isArray,
+        isUndefined,
+        isFunction,
+        isBoolean,
+        isNull
+    };
 }
