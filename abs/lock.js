@@ -117,6 +117,7 @@ function _destroy() {
     _instance = null;
 }
 
+// TODO: 添加规则配置,对于不同类，支持配置规则
 function _isPrivateMethod(methodName) {
     if (methodName.indexOf('_') >= 0) return true;
     return false;
