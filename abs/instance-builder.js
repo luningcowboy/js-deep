@@ -15,12 +15,12 @@
             let _rules = new Map();
 
             function _defaultRuleIsConstructor(methodName) {
-                if (methodName.indexOf('_') >= 0) return true;
-                return false;
+                return methodName === 'constructor';
             }
 
             function _defaultRuleIsPrivateMethod(methodName) {
-                return methodName === 'constructor';
+                if (methodName.indexOf('_') >= 0) return true;
+                return false;
             }
 
             function _checkRules(rules, methodName) {
@@ -46,7 +46,9 @@
                         exp[m] = (...args) => ClassName.prototype[m].apply(_getInstance(), args);
                     }
                 }
+                _rules.set(exp);
 
+                return exp;
             }
 
             function get(ClassName) {
